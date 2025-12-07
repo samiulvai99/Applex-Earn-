@@ -7,14 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
-        /* CSS (No Changes - Gaming Theme) */
-        :root { --primary: #6C5CE7; --secondary: #A29BFE; --bg: #F0F3F8; --surface: #FFFFFF; --text: #2D3436; --gold: #FFD700; --silver: #b2bec3; --bronze: #e17055; --danger: #ff4757; --success: #00b894; }
+        /* CSS (MODIFIED - Darker Background Theme) */
+        :root { 
+            --primary: #6C5CE7; 
+            --secondary: #A29BFE; 
+            --bg: #2C3A47; /* ⭐️ পরিবর্তিত প্রধান ব্যাকগ্রাউন্ড */ 
+            --surface: #FFFFFF; 
+            --text: #F5F6FA; /* ⭐️ পরিবর্তিত প্রধান টেক্সট রঙ */ 
+            --gold: #FFD700; 
+            --silver: #b2bec3; 
+            --bronze: #e17055; 
+            --danger: #ff4757; 
+            --success: #00b894; 
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg); color: var(--text); padding-bottom: 100px; -webkit-tap-highlight-color: transparent; }
         #app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; display: none; }
 
         /* LOADER */
-        .loader-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        .loader-overlay { position: fixed; inset: 0; background: #2C3A47; /* ⭐️ পরিবর্তিত লোডার ব্যাকগ্রাউন্ড */ z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; }
         .hex-spinner { width: 60px; height: 60px; position: relative; margin: 0 auto; }
         .hex-spinner::before, .hex-spinner::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 5px solid transparent; border-top-color: var(--primary); border-bottom-color: var(--secondary); animation: spin 1.5s linear infinite; filter: drop-shadow(0 0 10px var(--primary)); }
         .hex-spinner::after { border: 5px solid transparent; border-left-color: #00cec9; border-right-color: #e84393; animation: spin-rev 1s linear infinite; inset: 10px; }
@@ -32,12 +43,12 @@
         .support-btn { background: rgba(255,255,255,0.2); color: white; width: 42px; height: 42px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
 
         /* BALANCE */
-        .balance-card { background: var(--surface); width: 88%; margin: -75px auto 25px; padding: 25px; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); text-align: center; position: relative; z-index: 10; }
+        .balance-card { background: var(--surface); width: 88%; margin: -75px auto 25px; padding: 25px; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); text-align: center; position: relative; z-index: 10; color: #2D3436; /* ব্যালেন্স কার্ডের ভেতরের টেক্সট কালার সাদা ব্যাকগ্রাউন্ডের জন্য ঠিক রাখা হলো */ }
         .bal-title { font-size: 0.75rem; text-transform: uppercase; color: #b2bec3; letter-spacing: 1.5px; font-weight: 700; }
-        .bal-amt { font-size: 2.6rem; font-weight: 800; color: var(--text); margin: 5px 0; }
+        .bal-amt { font-size: 2.6rem; font-weight: 800; color: #2D3436; margin: 5px 0; }
         .currency { color: var(--primary); font-size: 1.2rem; }
         .stats { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 2px dashed #f1f2f6; }
-        .stat-box h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 2px; } .stat-box p { font-size: 0.75rem; color: #636e72; font-weight: 600; }
+        .stat-box h4 { font-size: 1.1rem; color: #2D3436; margin-bottom: 2px; } .stat-box p { font-size: 0.75rem; color: #636e72; font-weight: 600; }
 
         /* SECTIONS */
         .page { display: none; padding: 0 20px; animation: slideUp 0.4s; }
@@ -48,20 +59,20 @@
 
         /* ADS & TASKS */
         .ad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .ad-card { background: var(--surface); padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); cursor: pointer; transition: 0.2s; border: 2px solid transparent; }
+        .ad-card { background: var(--surface); padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); cursor: pointer; transition: 0.2s; border: 2px solid transparent; color: #2D3436; /* কার্ডের ভেতরের টেক্সট কালার ঠিক রাখা হলো */ }
         .ad-card:active { transform: scale(0.96); } .ad-card.disabled { opacity: 0.6; filter: grayscale(1); pointer-events: none; }
         .ad-card i { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; display: block; }
         .ad-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
         .ad-card span { font-size: 0.75rem; color: #636e72; background: #f1f2f6; padding: 3px 8px; border-radius: 5px; }
 
         .task-list { display: flex; flex-direction: column; gap: 12px; }
-        .task-item { background: var(--surface); padding: 15px; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .task-item { background: var(--surface); padding: 15px; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.03); color: #2D3436; /* টাস্ক আইটেমের ভেতরের টেক্সট কালার ঠিক রাখা হলো */ }
         .task-left { display: flex; align-items: center; gap: 15px; }
         .task-icon { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; }
         .task-info h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.2; }
         .task-info small { color: #00b894; font-weight: 600; font-size: 0.8rem; }
         .btn-act { padding: 8px 20px; border-radius: 50px; border: none; font-weight: 700; font-size: 0.8rem; cursor: pointer; min-width: 90px; }
-        .btn-start { background: var(--text); color: white; }
+        .btn-start { background: var(--text); color: #2D3436; } /* এখানে color পরিবর্তন করা হলো */
         .btn-wait { background: #ffeaa7; color: #d63031; cursor: not-allowed; }
         .btn-claim { background: var(--primary); color: white; animation: pulse 1s infinite; }
         @keyframes pulse { 50% { transform: scale(1.05); } }
@@ -75,9 +86,9 @@
         .rank-3 { order: 3; } .rank-3 img { border-color: var(--bronze); } .rank-3 .crown { color: var(--bronze); }
         .podium-img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; object-fit: cover; background: #fff; }
         .crown { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 1.4rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
-        .podium-name { font-size: 0.75rem; font-weight: 700; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block; }
+        .podium-name { font-size: 0.75rem; font-weight: 700; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; display: block; color: var(--text); }
         .podium-score { font-size: 0.7rem; color: var(--primary); font-weight: 800; background: white; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-top: 2px; }
-        .lb-list { background: var(--surface); border-radius: 20px; padding: 5px 15px; }
+        .lb-list { background: var(--surface); border-radius: 20px; padding: 5px 15px; color: #2D3436; /* লিস্টের ভেতরের টেক্সট কালার ঠিক রাখা হলো */ }
         .lb-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f1f2f6; }
         .lb-item:last-child { border-bottom: none; }
         .lb-rank { font-weight: 800; width: 30px; color: #b2bec3; font-size: 0.9rem; }
@@ -86,12 +97,12 @@
         .lb-val { font-weight: 700; color: var(--primary); }
 
         /* PROFILE */
-        .box { background: var(--surface); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .box { background: var(--surface); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); color: #2D3436; }
         .input-wrap { position: relative; margin-bottom: 15px; }
         .input-wrap i { position: absolute; top: 50%; transform: translateY(-50%); left: 15px; color: #a4b0be; }
-        .inp { width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #f1f2f6; border-radius: 12px; outline: none; font-weight: 600; background: #f8f9fa; }
-        .btn-main { width: 100%; padding: 15px; background: var(--text); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; }
-        .hist-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--surface); border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #eee; }
+        .inp { width: 100%; padding: 14px 14px 14px 45px; border: 2px solid #f1f2f6; border-radius: 12px; outline: none; font-weight: 600; background: #f8f9fa; color: #2D3436; }
+        .btn-main { width: 100%; padding: 15px; background: var(--text); color: #2D3436; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; }
+        .hist-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--surface); border-radius: 15px; margin-bottom: 10px; border-left: 5px solid #eee; color: #2D3436; }
         .hist-item.pending { border-color: var(--gold); } .hist-item.completed { border-color: var(--success); } .hist-item.rejected { border-color: var(--danger); }
         .status-badge { font-size:0.7rem; padding:4px 8px; border-radius:5px; font-weight:700; text-transform:uppercase; }
         .pending .status-badge { color:var(--gold); background:rgba(255,215,0,0.1); }
@@ -99,7 +110,7 @@
         .rejected .status-badge { color:var(--danger); background:rgba(255,71,87,0.1); }
         .invite-box { display: flex; gap: 10px; margin-top: 10px; }
         .btn-share { background: #0088cc; color: white; flex: 1; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-copy { background: var(--text); color: white; width: 50px; border: none; border-radius: 12px; cursor: pointer; font-size: 1.2rem; }
+        .btn-copy { background: var(--text); color: #2D3436; width: 50px; border: none; border-radius: 12px; cursor: pointer; font-size: 1.2rem; }
 
         /* NAV */
         .nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #2d3436; display: flex; justify-content: space-around; padding: 15px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 100; }
@@ -110,13 +121,13 @@
         
         /* --- WELCOME SCREEN STYLES (ADAPTED) --- */
         .welcome-screen {
-            position: fixed; inset: 0; background-color: var(--bg); z-index: 5000;
+            position: fixed; inset: 0; background-color: #3C4A57; /* ⭐️ পরিবর্তিত ওয়েলকাম স্ক্রিন ব্যাকগ্রাউন্ড */ z-index: 5000;
             display: none; /* Hide initially */ flex-direction: column; align-items: center; justify-content: center;
             padding: 25px; text-align: center; color: var(--text);
         }
         .welcome-screen-content { max-width: 350px; }
         .welcome-screen h1 { font-size: 1.5rem; margin-bottom: 5px; }
-        .welcome-screen p { font-size: 0.9rem; color: #636e72; margin-bottom: 30px; }
+        .welcome-screen p { font-size: 0.9rem; color: #b2bec3; margin-bottom: 30px; }
         .welcome-screen .icon-list { list-style: none; padding: 0; margin-bottom: 40px; }
         .welcome-screen .icon-list li { display: flex; align-items: center; gap: 15px; text-align: left; margin-bottom: 15px; font-size: 0.95rem; font-weight: 600; }
         .welcome-screen .icon-list i { font-size: 1.5rem; color: var(--primary); }
@@ -129,7 +140,7 @@
         .welcome-screen .continue-btn { background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; gap: 10px;}
         
         /* Modal for Registration Failed */
-        .reg-failed-modal .modal-content { text-align: center; background: var(--surface); padding: 25px; border-radius: 16px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; }
+        .reg-failed-modal .modal-content { text-align: center; background: var(--surface); padding: 25px; border-radius: 16px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; color: #2D3436;}
         .reg-failed-modal { display: none; position: fixed; z-index: 6000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 15px; }
         .reg-failed-modal .modal-content .icon { font-size: 3rem; color: var(--danger); margin-bottom: 15px; }
         .reg-failed-modal .modal-content h3 { color: var(--danger); margin-bottom: 10px; }
@@ -137,7 +148,7 @@
         /* --- END WELCOME SCREEN STYLES --- */
         
         /* --- NEW: MULTI ACCOUNT MODAL STYLES --- */
-        .multi-account-modal .modal-content { text-align: center; background: var(--surface); padding: 25px; border-radius: 16px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; }
+        .multi-account-modal .modal-content { text-align: center; background: var(--surface); padding: 25px; border-radius: 16px; width: 100%; max-width: 400px; animation: slideUp 0.3s ease-out; color: #2D3436; }
         .multi-account-modal { display: none; position: fixed; z-index: 6000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 15px; }
         .multi-account-modal .modal-content .icon { font-size: 3rem; color: var(--danger); margin-bottom: 15px; }
         .multi-account-modal .modal-content h3 { color: var(--danger); margin-bottom: 10px; }
@@ -256,7 +267,7 @@
             <div id="hist-area" class="task-list"></div>
             <div class="sec-head"><i class="fas fa-user-plus"></i> Invite</div>
             <div class="box">
-                <input id="ref-link" class="inp" readonly style="text-align:center; background:#fff;">
+                <input id="ref-link" class="inp" readonly style="text-align:center; background:#fff; color: #2D3436;">
                 <div class="invite-box">
                     <button onclick="shareTg()" class="btn-share"><i class="fab fa-telegram-plane"></i> Share</button>
                     <button onclick="copyRef()" class="btn-copy"><i class="far fa-copy"></i></button>
