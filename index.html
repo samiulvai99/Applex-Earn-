@@ -7,22 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
-        /* CSS (Modified for Premium Dark/Black Theme) */
+        /* CSS (Modified for New Yellow Border & Dark Theme) */
         /*
         ** পরিবর্তন:
-        ** 1. :root --bg পরিবর্তন করে #121212 (গভীর কালো) করা হয়েছে।
-        ** 2. :root --surface পরিবর্তন করে #1f1f1f করা হয়েছে (কার্ড ব্যাকগ্রাউন্ড)।
-        ** 3. :root --text পরিবর্তন করে #FFFFFF করা হয়েছে।
-        ** 4. .header-এর ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট উজ্জ্বল ভায়োলেট করা হয়েছে।
-        ** 5. .balance-card এর জন্য নতুন গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড যোগ করা হয়েছে।
+        ** 1. :root --primary পরিবর্তন করে উজ্জ্বল বেগুনি (#9900FF) করা হয়েছে।
+        ** 2. :root --bg পরিবর্তন করে গভীর কালো (#121212) করা হয়েছে।
+        ** 3. :root --surface পরিবর্তন করে গাঢ় ধূসর (#1E1E1E) করা হয়েছে।
+        ** 4. :root --text পরিবর্তন করে সাদা (#FFFFFF) করা হয়েছে।
+        ** 5. .balance-card এ উজ্জ্বল হলুদ বর্ডার ও বক্স শ্যাডো যোগ করা হয়েছে।
+        ** 6. .inp (ইনপুট ফিল্ড) এর রং পরিবর্তন করে গাঢ় ব্যাকগ্রাউন্ডের সাথে সামঞ্জস্যপূর্ণ করা হয়েছে।
         */
         :root { 
-            --primary: #7F00FF; /* উজ্জ্বল ভায়োলেট */ 
+            --primary: #9900FF; /* উজ্জ্বল বেগুনি (Withdraw Button) */ 
             --secondary: #A29BFE; 
             --bg: #121212; /* গভীর কালো ব্যাকগ্রাউন্ড */
-            --surface: #1f1f1f; /* কার্ড ব্যাকগ্রাউন্ড */
+            --surface: #1E1E1E; /* কার্ড ব্যাকগ্রাউন্ড */
             --text: #FFFFFF; /* পাঠ্যের রং সাদা */
-            --gold: #FFD700; 
+            --gold: #FFD700; /* হলুদ অ্যাকসেন্ট / বর্ডার */
             --silver: #b2bec3; 
             --bronze: #e17055; 
             --danger: #ff4757; 
@@ -31,7 +32,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { 
             background-color: var(--bg); 
-            color: var(--text); /* পাঠ্যের রং সাদা */
+            color: var(--text); 
             padding-bottom: 100px; 
             -webkit-tap-highlight-color: transparent; 
         }
@@ -48,11 +49,11 @@
         
         /* HEADER */
         .header { 
-            background: linear-gradient(160deg, #5D00FF, #A29BFE); /* উজ্জ্বল ভায়োলেট গ্রেডিয়েন্ট */
+            background: linear-gradient(160deg, #4834d4, var(--primary)); 
             padding: 85px 25px 90px; 
             border-radius: 0 0 45px 45px; 
             color: white; 
-            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4); 
+            box-shadow: 0 15px 30px rgba(72, 52, 212, 0.4); /* বেগুনি শ্যাডো */
             position: relative; 
         }
         .top-bar { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
@@ -62,10 +63,11 @@
         .user-info p { font-size: 0.7rem; opacity: 0.8; }
         .support-btn { background: rgba(255,255,255,0.2); color: white; width: 42px; height: 42px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
 
-        /* BALANCE */
+        /* BALANCE CARD (Modified for Yellow Border) */
         .balance-card { 
-            background: linear-gradient(135deg, #1f1f1f, #2d3436); /* গাঢ় কার্ড ব্যাকগ্রাউন্ড */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* গাঢ় শ্যাডো */
+            background: #141414; /* কার্ডের ভেতরের রং আরও গাঢ় */
+            border: 3px solid var(--gold); /* উজ্জ্বল হলুদ বর্ডার */
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 20px 40px rgba(0,0,0,0.6); /* হলুদ আভা ও গাঢ় শ্যাডো */
             width: 88%; 
             margin: -75px auto 25px; 
             padding: 25px; 
@@ -73,12 +75,10 @@
             text-align: center; 
             position: relative; 
             z-index: 10; 
-            /* NEW: Light border/glow for dark theme */
-            border: 1px solid #333;
         }
-        .bal-title { font-size: 0.75rem; text-transform: uppercase; color: #b2bec3; letter-spacing: 1.5px; font-weight: 700; }
-        .bal-amt { font-size: 2.6rem; font-weight: 800; color: var(--text); margin: 5px 0; }
-        .currency { color: var(--primary); font-size: 1.2rem; }
+        .bal-title { font-size: 0.8rem; text-transform: uppercase; color: #b2bec3; letter-spacing: 1.5px; font-weight: 700; }
+        .bal-amt { font-size: 2.8rem; font-weight: 800; color: var(--text); margin: 5px 0; }
+        .currency { color: var(--gold); /* কারেন্সি চিহ্ন হলুদ করা হলো */ font-size: 1.2rem; }
         .stats { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 2px dashed #333; /* ডিভাইডার */ }
         .stat-box h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 2px; } 
         .stat-box p { font-size: 0.75rem; color: #aaa; font-weight: 600; }
@@ -97,7 +97,7 @@
             padding: 20px; 
             border-radius: 20px; 
             text-align: center; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* গাঢ় শ্যাডো */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
             cursor: pointer; 
             transition: 0.2s; 
             border: 2px solid transparent; 
@@ -105,7 +105,7 @@
         .ad-card:active { transform: scale(0.96); } .ad-card.disabled { opacity: 0.6; filter: grayscale(1); pointer-events: none; }
         .ad-card i { font-size: 2rem; color: var(--secondary); margin-bottom: 10px; display: block; }
         .ad-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
-        .ad-card span { font-size: 0.75rem; color: #aaa; background: #333; /* গাঢ় ব্যাকগ্রাউন্ড */ padding: 3px 8px; border-radius: 5px; }
+        .ad-card span { font-size: 0.75rem; color: #aaa; background: #333; padding: 3px 8px; border-radius: 5px; }
 
         .task-list { display: flex; flex-direction: column; gap: 12px; }
         .task-item { 
@@ -115,7 +115,7 @@
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* গাঢ় শ্যাডো */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         .task-left { display: flex; align-items: center; gap: 15px; }
         .task-icon { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; }
@@ -146,7 +146,7 @@
         .lb-name { font-weight: 600; font-size: 0.9rem; flex: 1; }
         .lb-val { font-weight: 700; color: var(--primary); }
 
-        /* PROFILE */
+        /* PROFILE (Withdraw Box and Inputs) */
         .box { background: var(--surface); padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         .input-wrap { position: relative; margin-bottom: 15px; }
         .input-wrap i { position: absolute; top: 50%; transform: translateY(-50%); left: 15px; color: #a4b0be; }
@@ -166,7 +166,7 @@
         .rejected .status-badge { color:var(--danger); background:rgba(255,71,87,0.1); }
         .invite-box { display: flex; gap: 10px; margin-top: 10px; }
         .btn-share { background: #0088cc; color: white; flex: 1; border: none; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-copy { background: var(--secondary); color: white; width: 50px; border: none; border-radius: 12px; cursor: pointer; font-size: 1.2rem; }
+        .btn-copy { background: var(--primary); color: white; width: 50px; border: none; border-radius: 12px; cursor: pointer; font-size: 1.2rem; }
 
         /* NAV */
         .nav { 
